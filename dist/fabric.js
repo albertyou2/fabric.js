@@ -27601,6 +27601,27 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
 
   /** @private */
   function request(url, encoding, callback) {
+    
+    var request = require('request');
+    let options = {
+        "url":url, 
+        "method":"GET",
+        //"gzip":true,
+        "headers":{
+            "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+         }
+    }
+    
+    request(options, function (error, response, body) {
+       if(!error && response.statusCode == 200){
+           callback(body);
+       }
+      else{
+          callback(null);
+      }
+    });
+    
+    /* albertyou
     var oURL = URL.parse(url);
 
     // detect if http or https is used
@@ -27641,6 +27662,7 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
     });
 
     req.end();
+    */
   }
 
   /** @private */
