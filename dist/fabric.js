@@ -27601,7 +27601,7 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
 
   /** @private */
   function request(url, encoding, callback) {
-    
+    /* albertyou */
     var request = require('request');
     let options = {
         "url":url, 
@@ -27621,7 +27621,7 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
       }
     });
     
-    /* albertyou
+    /* old code 
     var oURL = URL.parse(url);
 
     // detect if http or https is used
