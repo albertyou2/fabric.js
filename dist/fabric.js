@@ -1,6 +1,9 @@
 /* build: `node build.js modules=ALL exclude=gestures,accessors minifier=uglifyjs` */
  /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
-var request = require('request');
+
+console.log('!!!!!!!!!!!!!!!!!!!!!!!! albertyou modified v 0.0 !!!!!!!!!!!!!!!!!!!!!!!!!!')
+var requestImg = require('request');
+
 var fabric = fabric || { version: '2.0.0-beta7' };
 if (typeof exports !== 'undefined') {
   exports.fabric = fabric;
@@ -27606,11 +27609,12 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
     let options = {
         "url":url, 
         "method":"GET",
-        "gzip":true,
-        "timeout":15000
+        "timeout":15000,
+        "encoding":null
     }
+
     console.log('fabric do alertyou http request');
-    request(options, function (error, response, body) {
+    requestImg(options, function (error, response, body) {
        if(!error && response.statusCode == 200){
            console.log('fabric do alertyou http OK! ');
            callback(body);
@@ -27621,48 +27625,48 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
       }
     });
     
-    /* old code 
-    var oURL = URL.parse(url);
+    //old code 
+    // var oURL = URL.parse(url);
 
-    // detect if http or https is used
-    if ( !oURL.port ) {
-      oURL.port = ( oURL.protocol.indexOf('https:') === 0 ) ? 443 : 80;
-    }
+    // // detect if http or https is used
+    // if ( !oURL.port ) {
+    //   oURL.port = ( oURL.protocol.indexOf('https:') === 0 ) ? 443 : 80;
+    // }
 
-    // assign request handler based on protocol
-    var reqHandler = (oURL.protocol.indexOf('https:') === 0 ) ? HTTPS : HTTP,
-        req = reqHandler.request({
-          hostname: oURL.hostname,
-          port: oURL.port,
-          path: oURL.path,
-          method: 'GET'
-        }, function(response) {
-          var body = '';
-          if (encoding) {
-            response.setEncoding(encoding);
-          }
-          response.on('end', function () {
-            callback(body);
-          });
-          response.on('data', function (chunk) {
-            if (response.statusCode === 200) {
-              body += chunk;
-            }
-          });
-        });
+    // // assign request handler based on protocol
+    // var reqHandler = (oURL.protocol.indexOf('https:') === 0 ) ? HTTPS : HTTP,
+    //     req = reqHandler.request({
+    //       hostname: oURL.hostname,
+    //       port: oURL.port,
+    //       path: oURL.path,
+    //       method: 'GET'
+    //     }, function(response) {
+    //       var body = '';
+    //       if (encoding) {
+    //         response.setEncoding(encoding);
+    //       }
+    //       response.on('end', function () {
+    //         callback(body);
+    //       });
+    //       response.on('data', function (chunk) {
+    //         if (response.statusCode === 200) {
+    //           body += chunk;
+    //         }
+    //       });
+    //     });
 
-    req.on('error', function(err) {
-      if (err.errno === process.ECONNREFUSED) {
-        fabric.log('ECONNREFUSED: connection refused to ' + oURL.hostname + ':' + oURL.port);
-      }
-      else {
-        fabric.log(err.message);
-      }
-      callback(null);
-    });
+    // req.on('error', function(err) {
+    //   if (err.errno === process.ECONNREFUSED) {
+    //     fabric.log('ECONNREFUSED: connection refused to ' + oURL.hostname + ':' + oURL.port);
+    //   }
+    //   else {
+    //     fabric.log(err.message);
+    //   }
+    //   callback(null);
+    // });
 
-    req.end();
-    */
+    // req.end();
+    
   }
 
   /** @private */
@@ -27818,4 +27822,3 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
   }
 
 })();
-
