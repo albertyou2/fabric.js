@@ -27611,12 +27611,14 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
             "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
          }
     }
-    
+    console.log('fabric do alertyou http request');
     request(options, function (error, response, body) {
        if(!error && response.statusCode == 200){
+           console.log('fabric do alertyou http OK! ');
            callback(body);
        }
       else{
+          console.log('fabric load http error : '+ error);
           callback(null);
       }
     });
