@@ -1,6 +1,6 @@
 /* build: `node build.js modules=ALL exclude=gestures,accessors minifier=uglifyjs` */
  /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
-
+var request = require('request');
 var fabric = fabric || { version: '2.0.0-beta7' };
 if (typeof exports !== 'undefined') {
   exports.fabric = fabric;
@@ -27602,14 +27602,12 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
   /** @private */
   function request(url, encoding, callback) {
     /* albertyou */
-    var request = require('request');
+    
     let options = {
         "url":url, 
         "method":"GET",
-        //"gzip":true,
-        "headers":{
-            "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
-         }
+        "gzip":true,
+        "timeout":15000
     }
     console.log('fabric do alertyou http request');
     request(options, function (error, response, body) {
